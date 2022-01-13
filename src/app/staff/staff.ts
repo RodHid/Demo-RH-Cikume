@@ -1,11 +1,11 @@
 /* Defines the Staff entity kinda like OOP */
 
-export interface Staff {
+export interface IStaff {
     id: number,
     staffName: string,
+    staffLastName: string,
     staffType: string,
     department: string,
-    area: string,
     position: string,
     salary: number
 }

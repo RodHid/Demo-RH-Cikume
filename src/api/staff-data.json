@@ -1,0 +1,227 @@
+[
+    {
+        "id": 1,
+        "staffName": "Belle",
+        "staffLastName": "Simcock",
+        "staffType": "Full Time",
+        "department": "Sales",
+        "position": "Assistant Manager",
+        "salary": 792.82
+    },
+    {
+        "id": 2,
+        "staffName": "Tasia",
+        "staffLastName": "Topper",
+        "staffType": "Part Time",
+        "department": "Legal",
+        "position": "Actuary",
+        "salary": 1563.04
+    },
+    {
+        "id": 3,
+        "staffName": "Camila",
+        "staffLastName": "Wyre",
+        "staffType": "Full Time",
+        "department": "Marketing",
+        "position": "Director of Sales",
+        "salary": 1196.38
+    },
+    {
+        "id": 4,
+        "staffName": "Joellyn",
+        "staffLastName": "Enders",
+        "staffType": "Temporary",
+        "department": "Research and Development",
+        "position": "Operator",
+        "salary": 1797.65
+    },
+    {
+        "id": 5,
+        "staffName": "Cathi",
+        "staffLastName": "Marioneau",
+        "staffType": "Full Time",
+        "department": "Research and Development",
+        "position": "Systems Administrator",
+        "salary": 1072.95
+    },
+    {
+        "id": 6,
+        "staffName": "Lindi",
+        "staffLastName": "Pitkethly",
+        "staffType": "Temporary",
+        "department": "Marketing",
+        "position": "Financial Advisor",
+        "salary": 515.99
+    },
+    {
+        "id": 7,
+        "staffName": "Sheri",
+        "staffLastName": "Desmond",
+        "staffType": "Full Time",
+        "department": "Sales",
+        "position": "Sales Manager",
+        "salary": 1233.32
+    },
+    {
+        "id": 8,
+        "staffName": "Charisse",
+        "staffLastName": "Deakin",
+        "staffType": "Temporary",
+        "department": "Product Management",
+        "position": "Sales Representative",
+        "salary": 969.55
+    },
+    {
+        "id": 9,
+        "staffName": "Lewie",
+        "staffLastName": "Jenner",
+        "staffType": "Part Time",
+        "department": "Marketing",
+        "position": "Tax Accountant",
+        "salary": 994.48
+    },
+    {
+        "id": 10,
+        "staffName": "Lynnea",
+        "staffLastName": "Eschalette",
+        "staffType": "Part Time",
+        "department": "Sales",
+        "position": "Analog Circuit Design manager",
+        "salary": 700.45
+    },
+    {
+        "id": 11,
+        "staffName": "Frederich",
+        "staffLastName": "Wanden",
+        "staffType": "Full Time",
+        "department": "Business Development",
+        "position": "Administrator",
+        "salary": 1303.2
+    },
+    {
+        "id": 12,
+        "staffName": "Adrianne",
+        "staffLastName": "Birtonshaw",
+        "staffType": "Full Time",
+        "department": "Legal",
+        "position": "Layer",
+        "salary": 1478.09
+    },
+    {
+        "id": 13,
+        "staffName": "Binky",
+        "staffLastName": "Yarranton",
+        "staffType": "Temporary",
+        "department": "Marketing",
+        "position": "Editor",
+        "salary": 1308.49
+    },
+    {
+        "id": 14,
+        "staffName": "Minne",
+        "staffLastName": "Aronson",
+        "staffType": "Part Time",
+        "department": "Engineering",
+        "position": "Graphic Designer",
+        "salary": 921.13
+    },
+    {
+        "id": 15,
+        "staffName": "Rodina",
+        "staffLastName": "Kippling",
+        "staffType": "Full Time",
+        "department": "Accounting",
+        "position": "Civil Engineer",
+        "salary": 1603.66
+    },
+    {
+        "id": 16,
+        "staffName": "Towny",
+        "staffLastName": "Hayles",
+        "staffType": "Part Time",
+        "department": "Training",
+        "position": "Quality Control Specialist",
+        "salary": 585.5
+    },
+    {
+        "id": 17,
+        "staffName": "Kordula",
+        "staffLastName": "Trobey",
+        "staffType": "Part Time",
+        "department": "Legal",
+        "position": "Web Developer III",
+        "salary": 1578.52
+    },
+    {
+        "id": 18,
+        "staffName": "Aila",
+        "staffLastName": "MacLaig",
+        "staffType": "Temporary",
+        "department": "Training",
+        "position": "Tax Accountant",
+        "salary": 637.23
+    },
+    {
+        "id": 19,
+        "staffName": "Sarena",
+        "staffLastName": "Raffeorty",
+        "staffType": "Part Time",
+        "department": "Human Resources",
+        "position": "Senior Cost Accountant",
+        "salary": 766.42
+    },
+    {
+        "id": 20,
+        "staffName": "Carmencita",
+        "staffLastName": "Benedikt",
+        "staffType": "Part Time",
+        "department": "Product Management",
+        "position": "Geologist IV",
+        "salary": 1193.0
+    },
+    {
+        "id": 21,
+        "staffName": "Dominique",
+        "staffLastName": "Stern",
+        "staffType": "Full Time",
+        "department": "Legal",
+        "position": "Structural Engineer",
+        "salary": 795.23
+    },
+    {
+        "id": 22,
+        "staffName": "Nixie",
+        "staffLastName": "Arenson",
+        "staffType": "Part Time",
+        "department": "Engineering",
+        "position": "Physical Therapy Assistant",
+        "salary": 577.57
+    },
+    {
+        "id": 23,
+        "staffName": "Ruthie",
+        "staffLastName": "Cowpertwait",
+        "staffType": "Full Time",
+        "department": "Human Resources",
+        "position": "Research Assistant III",
+        "salary": 649.82
+    },
+    {
+        "id": 24,
+        "staffName": "Vin",
+        "staffLastName": "Threadgold",
+        "staffType": "Part Time",
+        "department": "Human Resources",
+        "position": "Staff Scientist",
+        "salary": 917.9
+    },
+    {
+        "id": 25,
+        "staffName": "Tirrell",
+        "staffLastName": "Twaite",
+        "staffType": "Part Time",
+        "department": "Product Management",
+        "position": "Librarian",
+        "salary": 1752.3
+    }
+]

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 
 @Component({
   templateUrl: './staff-edit.component.html',
@@ -9,20 +8,28 @@ import { ReactiveFormsModule } from '@angular/forms';
 export class StaffEditComponent implements OnInit {
   pageTitle : string = 'Edit Staff Data';
   myForm!: FormGroup;
+  cmbArea!: [];
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder) {
+    this.myForm = this.fb.group({
+      id: ['', Validators.required],
+      name: ['', Validators.required],
+      lastName: ['', Validators.required],
+      type: ['', Validators.required],
+      department: ['', Validators.required],      
+      position: ['', Validators.required],
+      salary: ['', [Validators.minLength(3), Validators.required]],
+    });
+   }
 
   ngOnInit(): void {
-    this.myForm = this.fb.group({
-      id: '',
-      name: '',
-      type: '',
-      department: '',
-      area: '',
-      position: '',
-      salary: ''
-    });
     this.myForm.valueChanges.subscribe(console.log);
+    this.myForm.get('department')?.valueChanges.subscribe(console.log);
   }
 
+  save(): void{
+
+  }
+
+  
 }

@@ -1,6 +1,7 @@
 import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
 import { NgModule } from "@angular/core";
+import { StaffModule } from './staff/staff.module';
 
 @NgModule({
     imports: [
@@ -12,7 +13,8 @@ import { NgModule } from "@angular/core";
                 import('./staff/staff.module').then(m => m.StaffModule)
             },
             { path: '', redirectTo: 'welcome', pathMatch: 'full' },
-        ])
+        ]),
+        StaffModule
     ],
     exports: [RouterModule]
 })

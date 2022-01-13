@@ -13,13 +13,15 @@ import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
 /*Funcionality Modules*/
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
 /*Routing Modules*/
 import { AppRoutingModule } from './app.routing.module';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -29,11 +31,12 @@ import { AppRoutingModule } from './app.routing.module';
   imports: [
     BrowserModule,
     HttpClientModule,
+    CommonModule,
     //Compatible form, from AngularFire 7 theres a new way to do it
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule,
+    //AngularFireModule.initializeApp(environment.firebaseConfig),
+    //AngularFirestoreModule,
     AppRoutingModule,
-    StaffModule
+    //StaffModule --> if you import it on the AppRoutingModule you dont have to import it here
   ],
   providers: [],
   bootstrap: [AppComponent]

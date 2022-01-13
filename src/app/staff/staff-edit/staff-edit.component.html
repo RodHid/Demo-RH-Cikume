@@ -3,8 +3,7 @@
     <h3><i class="fa fa-address-card"></i> Staff Data</h3>
   </div>
     <div class="card-body">
-      <form [formGroup]="myForm">
-        {{ myForm.value}}
+      <form (ngSubmit)="save()" [formGroup]="myForm">
         <div class="row">
           <div class="col-md-4">
             <div class="form-floating mb-3">
@@ -14,21 +13,16 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-8">
+          <div class="col-md-6">
             <div class="form-floating mb-3">
               <input type="text" class="form-control" id="Name" formControlName="name" placeholder=".">
-              <label for="Name">Name</label>
+              <label for="Name">Firts Names</label>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-6">
             <div class="form-floating mb-3">
-              <select class="form-select" formControlName="type" id="Type" aria-label="">
-                <option selected>- Choose one -</option>
-                <option value="1">Part Time</option>
-                <option value="2">Full Time</option>
-                <option value="3">Temporary</option>
-              </select>
-              <label for="Type">Staff Type</label>
+              <input type="text" class="form-control" id="Name" formControlName="lastName" placeholder=".">
+              <label for="Name">Last Names</label>
             </div>
           </div>
         </div>
@@ -43,31 +37,35 @@
           </div>
           <div class="col-md-6">
             <div class="form-floating mb-3">
-              <select class="form-select" formControlName="area" id="Area" aria-label="">
-                <option selected>- Choose one -</option>
-              </select>
-              <label for="Area">Area</label>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-7">
-            <div class="form-floating mb-3">
               <input type="text" class="form-control" formControlName="position" id="Position" placeholder=".">
               <label for="Position">Position</label>
             </div>
           </div>
-          <div class="col-md-5">
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-floating mb-3">
+              <select class="form-select" formControlName="type" id="Type" aria-label="">
+                <option selected>- Choose one -</option>
+                <option value="Part Time">Part Time</option>
+                <option value="Full Time">Full Time</option>
+                <option value="Temporary">Temporary</option>
+              </select>
+              <label for="Type">Staff Type</label>
+            </div>
+          </div>
+          <div class="col-md-6">
             <div class="form-floating mb-3">
               <input type="Number" class="form-control" formControlName="salary" id="Salary" placeholder=".">
               <label for="Salary">Salary</label>
             </div>
           </div>
         </div>
+       
         <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
           <button type="button" class="btn btn-outline-primary" [routerLink]="['/staff']"><i class="fa fa-arrow-circle-left"></i> Back</button>
           <button type="button" class="btn btn-outline-success"><i class="fa fa-plus-square"></i> Save</button>
-          <button type="button" class="btn btn-outline-danger"><i class="fa fa-trash"></i> Clean</button>
+          <button type="button" class="btn btn-outline-danger"><i class="fa fa-eraser"></i> Clean</button>
         </div>
       </form>
     </div>
