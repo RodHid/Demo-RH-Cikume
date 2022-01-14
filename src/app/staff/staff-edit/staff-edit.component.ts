@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { StaffService } from '../staff.service';
 
 @Component({
   templateUrl: './staff-edit.component.html',
@@ -10,12 +11,12 @@ export class StaffEditComponent implements OnInit {
   myForm!: FormGroup;
   cmbArea!: [];
 
-  constructor(private fb: FormBuilder) {
-    this.myForm = this.fb.group({
-      id: ['', Validators.required],
-      name: ['', Validators.required],
-      lastName: ['', Validators.required],
-      type: ['', Validators.required],
+  constructor(private _fb: FormBuilder, private _service: StaffService) {
+    this.myForm = this._fb.group({
+      dui: ['', Validators.required, Validators.minLength(9), Validators.maxLength(9)],
+      staffName: ['', Validators.required],
+      staffLastName: ['', Validators.required],
+      staffType: ['', Validators.required],
       department: ['', Validators.required],      
       position: ['', Validators.required],
       salary: ['', [Validators.minLength(3), Validators.required]],
@@ -28,7 +29,7 @@ export class StaffEditComponent implements OnInit {
   }
 
   save(): void{
-
+    this._service.createStaff(this.myForm.value).then(() => this.myForm.reset());
   }
 
   

@@ -8,8 +8,11 @@
         <div class="row">
           <div class="col-md-4">
             <div class="form-floating mb-3">
-              <select class="form-select" id="Filter" aria-placeholder=".">
-              </select>
+              <select
+                class="form-select"
+                id="Filter"
+                aria-placeholder="."
+              ></select>
               <label for="Filter">Filter by</label>
             </div>
           </div>
@@ -21,7 +24,7 @@
               class="btn btn-primary mb-3"
               [routerLink]="['/staff', 'edit']"
             >
-              <i class="fa fa-plus-square"></i> Add New Staff
+              <i class="fa fa-plus-square"></i> Add
             </button>
           </div>
         </div>
@@ -31,35 +34,44 @@
               <table class="table table-hover table-striped">
                 <thead class="table-dark">
                   <tr>
-                    <th>ID</th>
-                    <th>NAME</th>
+                    <th>DUI</th>
+                    <th>FIRST NAME</th>
+                    <th>LAST NAME</th>
                     <th>DEPARTMENT</th>
-                    <th>AREA</th>
                     <th>POSITION</th>
                     <th>TYPE</th>
                     <th>SALARY</th>
                     <th></th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                <tbody *ngIf="staff">
+                  <tr *ngFor="let st of staff; index as i">
+                    <td>{{ st.dui }}</td>
+                    <td>{{ st.staffName }}</td>
+                    <td>{{ st.staffLastName }}</td>
+                    <td>{{ st.department }}</td>
+                    <td>{{ st.position }}</td>
+                    <td>{{ st.staffType }}</td>
+                    <td>{{ st.salary | currency: 'USD':'symbol':'1.2-2'}}</td>
                     <td>
                       <div
                         class="btn-group"
                         role="group"
                         aria-label="Basic example"
                       >
-                        <button type="button" class="btn btn-outline-success">
+                        <button
+                          type="button"
+                          title="Edit"
+                          class="btn btn-outline-success"
+                        >
                           <i class="fa fa-pencil-square-o"></i>
                         </button>
-                        <button type="button" class="btn btn-outline-danger">
+                        <button
+                          type="button"
+                          title="Delete"
+                          (click)="deleteStaff(st)"
+                          class="btn btn-outline-danger"
+                        >
                           <i class="fa fa-trash"></i>
                         </button>
                       </div>

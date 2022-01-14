@@ -1,8 +1,8 @@
 
 /* imports for the database conection */
-import { environment } from './../environments/environment';
-import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { environment } from 'src/environments/environment';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 
 /* Components */
 import { StaffListComponent } from './staff/staff-list/staff-list.component';
@@ -32,9 +32,8 @@ import { CommonModule } from '@angular/common';
     BrowserModule,
     HttpClientModule,
     CommonModule,
-    //Compatible form, from AngularFire 7 theres a new way to do it
-    //AngularFireModule.initializeApp(environment.firebaseConfig),
-    //AngularFirestoreModule,
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideFirestore(() => getFirestore()),
     AppRoutingModule,
     //StaffModule --> if you import it on the AppRoutingModule you dont have to import it here
   ],
