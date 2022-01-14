@@ -22,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app.routing.module';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { CommonModule } from '@angular/common';
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideFirestore(() => getFirestore()),
     AppRoutingModule,
+    BrowserAnimationsModule,
     //StaffModule --> if you import it on the AppRoutingModule you dont have to import it here
   ],
   providers: [],

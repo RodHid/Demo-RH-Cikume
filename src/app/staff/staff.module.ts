@@ -4,7 +4,9 @@ import { StaffListComponent } from './staff-list/staff-list.component';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
     imports: [
@@ -20,7 +22,9 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
             },
         ]),
         ReactiveFormsModule,
-        FormsModule
+        FormsModule,
+        MatButtonModule,
+        MatFormFieldModule
     ],
     declarations: [StaffListComponent, StaffEditComponent],
 })

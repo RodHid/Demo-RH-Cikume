@@ -32,5 +32,8 @@ export class StaffEditComponent implements OnInit {
     this._service.createStaff(this.myForm.value).then(() => this.myForm.reset());
   }
 
+  update() {
+    //this._service.updateStaff(staff);
+  }
   
 }
