@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { pipe, tap } from 'rxjs';
 import Swal from 'sweetalert2';
 import { IStaff } from '../staff';
 import { StaffService } from '../staff.service';
@@ -23,7 +22,10 @@ export class StaffListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //this.filterData('','');
+    /* this._staffService.getStaff().subscribe((res: IStaff[]) => {
+      this.staff = res;
+    }) */
+    this.filterData('','');
   }
 
   filterData(type: string,value: string) {
@@ -66,8 +68,8 @@ export class StaffListComponent implements OnInit {
   }
 
   deleteStaff(staff: IStaff) {
-    this._staffService.supressStaff(staff);
-    /* console.log(staff);
+    //this._staffService.supressStaff(staff);
+    console.log(staff);
     Swal.fire({
       icon: 'warning',
       iconColor: '#E52121',
@@ -79,7 +81,7 @@ export class StaffListComponent implements OnInit {
       if (result.isConfirmed) {
         this._staffService.deleteStaff(staff).then(() => console.log('Dato Eliminado'));
       }
-    }) */
+    })
   }
 
   show(): boolean{

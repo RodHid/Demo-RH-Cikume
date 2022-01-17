@@ -72,9 +72,6 @@
               <td>{{ st.salary | currency: "USD":"symbol":"1.2-2" }}</td>
               <td>
                 <div class="btn-group" role="group" aria-label="Basic example">
-                  <button type="button" title="Details" class="btn btn-primary">
-                    <i class="fa fa-info-circle" aria-hidden="true"></i>
-                  </button>
                   <button type="button" title="Edit" class="btn btn-success" [routerLink]="['/staff', st.id, 'edit']">
                     <i class="fa fa-pencil-square-o"></i>
                   </button>
