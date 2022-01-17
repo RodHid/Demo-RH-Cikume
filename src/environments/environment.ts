@@ -12,6 +12,7 @@ export const environment = {
     messagingSenderId: "503884553002",
     appId: "1:503884553002:web:a13a5caf5ec3ef5e2a9c53"
   },
+  firebaseURL : "https://fir-rh-a9eb7-default-rtdb.firebaseio.com/",
 };
 
 /*

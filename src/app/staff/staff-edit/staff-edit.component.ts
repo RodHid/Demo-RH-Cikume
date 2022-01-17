@@ -1,9 +1,7 @@
-import { IStaffResolved } from './../staff';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { StaffService } from '../staff.service';
-import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y/input-modality/input-modality-detector';
 import { IStaff } from '../staff';
 
 @Component({
@@ -11,17 +9,16 @@ import { IStaff } from '../staff';
   styleUrls: ['./staff-edit.component.css']
 })
 export class StaffEditComponent implements OnInit {
-  pageTitle : string = 'Edit Staff Data';
+  pageTitle : string = 'Staff Data';
   myForm!: FormGroup;
-  staff!: IStaff[];
+  staff!: IStaff;
   id!: string | null;
-  cmbArea!: [];
 
-  constructor(private _fb: FormBuilder, private _service: StaffService, private _route: ActivatedRoute) {
+  constructor(private _fb: FormBuilder, private _service: StaffService, private _route: ActivatedRoute, private _router: Router) {
     this.myForm = this._fb.group({
-      dui: ['', Validators.required, Validators.minLength(9), Validators.maxLength(9)],
-      staffName: ['', Validators.required],
-      staffLastName: ['', Validators.required],
+      dui: ['', [Validators.required, Validators.maxLength(9)]],
+      staffName: ['', [Validators.required, Validators.maxLength(40)]],
+      staffLastName: ['', [Validators.required, Validators.maxLength(40)]],
       staffType: ['', Validators.required],
       department: ['', Validators.required],      
       position: ['', Validators.required],
@@ -32,21 +29,22 @@ export class StaffEditComponent implements OnInit {
   ngOnInit(): void {
     this.id = this._route.snapshot.paramMap.get('id');
     this.getStaff(this.id);
-    this.myForm.valueChanges.subscribe(console.log);
-    this.myForm.get('department')?.valueChanges.subscribe(console.log);
   }
 
   save(): void{
-    this._service.createStaff(this.myForm.value).then(() => this.myForm.reset());
+    if(this.id != '0'){
+      this._service.updateStaff(this.myForm.value, this.id);
+    } else{
+      //this._service.createStaff(this.myForm.value).then(() => this.myForm.reset());
+      this._service.addStaff(this.myForm.value);
+    }
+    this._router.navigateByUrl("/staff");
   }
 
-  update() {
-    //this._service.updateStaff(staff);
-  }
-  
   getStaff(id: any) {
-    this._service.specifiedStaff(id).subscribe(data => {
-      const stResolved: IStaffResolved = data['resolvedData'];
-    });
+    this._service.specifiedStaff(id).subscribe( data => {
+      //console.log(data);
+      this.myForm.setValue(data);
+    })
   }
 }

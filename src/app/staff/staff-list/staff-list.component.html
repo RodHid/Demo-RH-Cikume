@@ -1,25 +1,50 @@
 <div class="container-fluid">
-  <div class="card">
+  <div class="card" style="border: 0;">
     <div class="card-header bg-secondary text-light">
-      <h3><i class="fa fa-address-card"></i> Staff List</h3>
+      <div class="row">
+        <div class="col-md-8">
+          <h3><i class="fa fa-address-card"></i> Staff List</h3>
+        </div>
+      </div>
     </div>
     <div class="card-body">
-      <div class="container">
+      <div class="container-fluid">
         <div class="row">
-          <div class="col-md-4">
-            <div class="form-floating mb-3">
-              <select class="form-select" id="Filter" aria-placeholder="."></select>
-              <label for="Filter">Filter by</label>
+          <div class="col-lg-12 col-md-2  mb-3">
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-primary" [routerLink]="['/staff', 0, 'edit']"><i class="fa fa-plus-square"></i>&nbsp; Add Staff</button>
+              <button type="button" class="btn btn-success" (click)="show()"><i [ngClass]="(showFilter)? 'fa fa-eye': 'fa fa-eye-slash'"></i>&nbsp;Show Filter</button>
             </div>
           </div>
-          <div class="col-md-4">
-            <div class="form-floating mb-3"></div>
-          </div>
-          <div class="col-md-3">
-            <button class="btn btn-primary mb-3" [routerLink]="['/staff', 0, 'edit']">
-              <i class="fa fa-plus-square"></i> Add
-            </button>
-          </div>
+        </div>
+        <div class="row">
+          <form [formGroup]="filterForm" *ngIf="showFilter">
+            <div class="col-lg-4">
+              <div class="form-floating mb-2">
+                <select class="form-select" id="Filter" formControlName="type" aria-placeholder=".">
+                  <option value="No Filter">No Filter</option>
+                  <option value="Dui">Dui</option>
+                  <option value="Department">Department</option>
+                  <option value="Last Name">Last Name</option>
+                  <option value="First Name">First Name</option>
+                  <option value="Type">Type</option>
+                </select>
+                <label for="Filter">Filter by</label>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-floating mb-2">
+                <input type="text" class="form-control" formControlName="value" id="value" placeholder=".">
+                <label for="value">Value</label>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <button class="btn btn-primary mb-3"
+                (click)="filterData(filterForm.get('type')?.value, filterForm.get('value')?.value)">
+                <i class="fa fa-filter"></i>&nbsp;&nbsp; SEARCH
+              </button>
+            </div>
+          </form>
         </div>
       </div>
       <div class="table-responsive">
@@ -50,8 +75,7 @@
                   <button type="button" title="Details" class="btn btn-primary">
                     <i class="fa fa-info-circle" aria-hidden="true"></i>
                   </button>
-                  <button type="button" title="Edit" class="btn btn-success"
-                    [routerLink]="['/staff', st.id, 'edit']">
+                  <button type="button" title="Edit" class="btn btn-success" [routerLink]="['/staff', st.id, 'edit']">
                     <i class="fa fa-pencil-square-o"></i>
                   </button>
                   <button type="button" title="Delete" (click)="deleteStaff(st)" class="btn btn-danger">

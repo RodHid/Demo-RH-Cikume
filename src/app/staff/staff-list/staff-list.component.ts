@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { pipe, tap } from 'rxjs';
 import Swal from 'sweetalert2';
 import { IStaff } from '../staff';
 import { StaffService } from '../staff.service';
@@ -11,19 +11,63 @@ import { StaffService } from '../staff.service';
 })
 export class StaffListComponent implements OnInit {
   pageTitle: string = 'Staff List';
-  sub!: Subscription;
   staff!: IStaff[];
+  filterForm!: FormGroup;
+  showFilter: boolean = false;
 
-  constructor(private _route: ActivatedRoute, private _staffService: StaffService) { }
+  constructor(private _fb: FormBuilder, private _staffService: StaffService) {
+    this.filterForm = this._fb.group({
+      type: [''],
+      value: ['']
+    });
+  }
 
   ngOnInit(): void {
+    //this.filterData('','');
+  }
+
+  filterData(type: string,value: string) {
+    console.log(type+''+value);
     this._staffService.readStaff().subscribe((res: IStaff[]) => {
-      this.staff = res;
+        switch (type) {
+          case 'First Name':
+            this.staff = res.filter(
+              item => item.staffName.includes(value)
+            );
+            break;
+          case 'Last Name':
+            this.staff = res.filter(
+              item => item.staffLastName.includes(value)
+            );
+            break;
+          case 'Department':
+            this.staff = res.filter(
+              item => item.department.includes(value)
+            );
+            break;
+          case 'No Filter':
+            this.staff = res;
+            break;
+          case 'Dui':
+            this.staff = res.filter(
+              item => item.dui.includes(value)
+            );
+            break;
+          case 'Type':
+            this.staff = res.filter(
+              item => item.staffType.includes(value)
+            );
+            break;
+          default:
+            this.staff = res;
+            break;
+        }
     })
   }
 
   deleteStaff(staff: IStaff) {
-    console.log(staff);
+    this._staffService.supressStaff(staff);
+    /* console.log(staff);
     Swal.fire({
       icon: 'warning',
       iconColor: '#E52121',
@@ -35,8 +79,11 @@ export class StaffListComponent implements OnInit {
       if (result.isConfirmed) {
         this._staffService.deleteStaff(staff).then(() => console.log('Dato Eliminado'));
       }
-    })
+    }) */
   }
 
+  show(): boolean{
+    return (this.showFilter)? this.showFilter = false: this.showFilter = true;
+  }
 
 }
