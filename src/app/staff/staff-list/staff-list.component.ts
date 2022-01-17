@@ -26,15 +26,17 @@ export class StaffListComponent implements OnInit {
     console.log(staff);
     Swal.fire({
       icon: 'warning',
-      title: 'Do you want to delete '+staff.staffName+' '+staff.staffLastName+' data?',
+      iconColor: '#E52121',
+      title: 'Do you want to delete this data?',
+      text: 'Staff: ' + staff.staffName + ' ' + staff.staffLastName,
       showCancelButton: true,
       showConfirmButton: true
     }).then((result) => {
-      if(result.isConfirmed){
+      if (result.isConfirmed) {
         this._staffService.deleteStaff(staff).then(() => console.log('Dato Eliminado'));
       }
     })
   }
-  
+
 
 }

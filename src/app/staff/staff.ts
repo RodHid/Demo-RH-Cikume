@@ -10,3 +10,8 @@ export interface IStaff {
     position: string,
     salary: number
 }
+
+export interface IStaffResolved {
+    product: IStaff;
+    error?: any;
+  }

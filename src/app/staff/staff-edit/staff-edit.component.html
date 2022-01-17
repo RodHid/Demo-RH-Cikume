@@ -1,4 +1,4 @@
-<div class="card my-3 mx-5" style="border: none;">
+<div class="card my-3 mx-5">
   <div class="card-header bg-secondary text-light">
     <h3><i class="fa fa-address-card"></i> Staff Data</h3>
   </div>
@@ -18,8 +18,8 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="Name" formControlName="staffName" placeholder=".">
-              <label for="Name">Firts Names</label>
+              <input type="text" class="form-control" id="staffName" formControlName="staffName" placeholder=".">
+              <label for="staffName">Firts Names</label>
             </div>
           </div>
           <div class="col-md-6">
@@ -32,47 +32,47 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-floating mb-3">
-              <select class="form-select" formControlName="department" id="Department" aria-label="">
+              <select class="form-select" formControlName="department" id="department" aria-label="">
                 <option selected>- Choose one -</option>
                 <option value="Human Resources">Human Resources</option>
                 <option value="Development">Development</option>
                 <option value="Marketing">Marketing</option>
                 <option value="Sales">Sales</option>
               </select>
-              <label for="Department">Department</label>
+              <label for="department">Department</label>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-floating mb-3">
-              <input type="text" class="form-control" formControlName="position" id="Position" placeholder=".">
-              <label for="Position">Position</label>
+              <input type="text" class="form-control" formControlName="position" id="position" placeholder=".">
+              <label for="position">Position</label>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6">
             <div class="form-floating mb-3">
-              <select class="form-select" formControlName="staffType" id="Type" aria-label="">
+              <select class="form-select" formControlName="staffType" id="staffType" aria-label="">
                 <option selected>- Choose one -</option>
                 <option value="Part Time">Part Time</option>
                 <option value="Full Time">Full Time</option>
                 <option value="Temporary">Temporary</option>
               </select>
-              <label for="Type">Staff Type</label>
+              <label for="staffType">Staff Type</label>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-floating mb-3">
-              <input type="Number" class="form-control" formControlName="salary" id="Salary" placeholder=".">
-              <label for="Salary">Salary</label>
+              <input type="Number" class="form-control" formControlName="salary" id="salary" placeholder=".">
+              <label for="salary">Salary</label>
             </div>
           </div>
         </div>
        
         <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
           <button type="button" class="btn btn-outline-primary-inversed" [routerLink]="['/staff']"><i class="fa fa-arrow-circle-left"></i> Back</button>
-          <button type="submit" class="btn btn-outline-success"><i class="fa fa-plus-square"></i> Save</button>
-          <button type="button" class="btn btn-outline-danger"><i class="fa fa-eraser"></i> Clean</button>
+          <button type="submit" class="btn btn-outline-success-reversed"><i class="fa fa-plus-square"></i> Save</button>
+          <button type="button" class="btn btn-outline-danger-reversed"><i class="fa fa-eraser"></i> Clean</button>
         </div>
       </form>
     </div>

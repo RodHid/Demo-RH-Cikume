@@ -2,8 +2,8 @@ import { IStaff } from './staff';
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { addDoc, collection, collectionData, deleteDoc, doc, Firestore, setDoc } from '@angular/fire/firestore';
-
+//import { addDoc, collection, collectionData, deleteDoc, doc, docData, documentId, setDoc, AngularFiretore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,15 +12,16 @@ export class StaffService {
   private api: string = 'api/staff-data.json';
   private ref!: any;
   constructor(private _http: HttpClient,
-    private readonly _firestore: Firestore) { }
+    //private readonly _firestore: Firestore,
+    private  _db: AngularFirestore) { }
 
-  createStaff(staff: IStaff) {
+/*   createStaff(staff: IStaff) {
     const staffRef = collection(this._firestore, 'staff');
     return addDoc(staffRef, staff);
   }
 
   readStaff(): Observable<IStaff[]> {
-    //const staffRef = this._db.collection('staff', order => order.orderBy('idStaff'));
+    const staffRef = this._db.collection('staff', order => order.orderBy('idStaff'));
     const staffRef = collection(this._firestore, 'staff');
     return collectionData(staffRef, { idField: 'id' }) as Observable<IStaff[]>;
   }
@@ -35,6 +36,11 @@ export class StaffService {
     return deleteDoc(staffRef);
   }
 
+  specifiedStaff(id: string): Observable<IStaff[]> {
+    const staffRef = doc(this._firestore, `staff/${id}`);
+    return docData( staffRef ) as Observable<IStaff[]>;
+  }
+ */
 
 
   private handleError(err: HttpErrorResponse): Observable<never> {
