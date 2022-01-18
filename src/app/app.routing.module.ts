@@ -7,14 +7,13 @@ import { StaffModule } from './staff/staff.module';
     imports: [
         RouterModule.forRoot([
             { path: 'welcome', component: HomeComponent },
+            { path: '', redirectTo: 'welcome', pathMatch: 'full' },
             {
                 path: 'staff',
                 loadChildren: () =>
                 import('./staff/staff.module').then(m => m.StaffModule)
             },
-            { path: '', redirectTo: 'welcome', pathMatch: 'full' },
-        ]),
-        StaffModule
+        ])
     ],
     exports: [RouterModule]
 })

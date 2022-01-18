@@ -2,7 +2,7 @@ import { IStaff } from './staff';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { addDoc, collection, collectionData, deleteDoc, doc, docData, setDoc, Firestore } from '@angular/fire/firestore';
+import { addDoc, collection, collectionData, deleteDoc, doc, docData, setDoc, Firestore, DocumentData } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -16,12 +16,12 @@ export class StaffService {
     //private readonly _firestore: Firestore,
     private  _firestore: Firestore) { }
 
-   createStaff(staff: IStaff) {
+   createStaff(staff: IStaff): DocumentData {
     const staffRef = collection(this._firestore, 'staff');
     return addDoc(staffRef, staff);
   }
 
-  addStaff(staff: IStaff) {
+  addStaff(staff: IStaff): void {
     console.log(staff);
     this.staff.push(staff);
     this._http.put(this.url+'.json',this.staff).subscribe({
@@ -30,32 +30,22 @@ export class StaffService {
     });
   }
 
-  getStaff(): Observable<IStaff[]>{
-    return this._http.get<IStaff[]>(this.url+'.json');
-  }
-
-  supressStaff(staff: IStaff) {
-    console.log(staff);
-    //this._http.delete(this.url+'/'+staff.id+'.json');
-  }
-
-  readStaff(): Observable<IStaff[]> {
-    //const staffRef = this._db.collection('staff', order => order.orderBy('idStaff'));
+  readStaff$(): Observable<IStaff[]> {
     const staffRef = collection(this._firestore, 'staff');
     return collectionData(staffRef, { idField: 'id' }) as Observable<IStaff[]>;
   }
 
-  updateStaff(staff: IStaff, id: any) {
+  updateStaff(staff: IStaff, id: any): DocumentData {
     const staffRef = doc(this._firestore, `staff/${id}`);
     return setDoc(staffRef, staff);
   }
 
-  deleteStaff(staff: IStaff) {
+  deleteStaff(staff: IStaff): Promise<void> {
     const staffRef = doc(this._firestore, `staff/${staff.id}`);
     return deleteDoc(staffRef);
   }
 
-  specifiedStaff(id: string): Observable<IStaff> {
+  specifiedStaff$(id: string): Observable<IStaff> {
     const staffRef = doc(this._firestore, `staff/${id}`);
     return docData( staffRef ) as Observable<IStaff>;
   }

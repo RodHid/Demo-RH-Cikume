@@ -6,73 +6,107 @@
 
   
     <div class="card-body">
-      <form (ngSubmit)="save()" [formGroup]="myForm">
+      <form (ngSubmit)="save()" [formGroup]="myForm" autocomplete="off" novalidate>
         <div class="row">
           <div class="col-md-4">
             <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="dui" formControlName="dui" placeholder=".">
+              <input type="text" class="form-control" [ngClass]="(myForm.get('dui')?.invalid && myForm.get('dui')?.dirty && !myForm.get('dui')?.pristine && myForm.get('dui')?.touched)? 'is-invalid': '' || (myForm.get('dui')?.pristine)? '': '' || (myForm.get('dui')?.valid)? 'is-valid':''" pattern="^[0-9]{7}-+[0-9]{1}$" id="dui" formControlName="dui" placeholder=".">
               <label for="dui">DUI</label>
+              <div *ngIf="(myForm.get('dui')?.hasError('pattern') && !myForm.get('dui')?.pristine && !myForm.get('dui')?.untouched)" class="invalid-feedback">
+                Dui pattern: #######-#
+              </div>
+              <div *ngIf="(myForm.get('dui')?.hasError('required'))" class="invalid-feedback">
+                This item is required
+              </div>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6">
             <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="staffName" formControlName="staffName" placeholder=".">
-              <label for="staffName">Firts Names</label>
+              <input type="text" class="form-control" id="staffName" formControlName="staffName" placeholder="." [ngClass]="(myForm.get('staffName')?.invalid && myForm.get('staffName')?.dirty && !myForm.get('staffName')?.pristine && myForm.get('staffName')?.touched)? 'is-invalid': '' || (myForm.get('staffName')?.untouched || myForm.get('staffName')?.pristine)? '': '' || (myForm.get('staffName')?.valid)? 'is-valid':''" required>
+              <label for="staffName">First Names</label>
+              <div *ngIf="myForm.get('staffName')?.hasError('maxlength')" class="invalid-feedback">
+                max characters: 40
+              </div>
+              <div *ngIf="(myForm.get('staffName')?.hasError('required'))" class="invalid-feedback">
+                This item is required
+              </div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="staffLastName" formControlName="staffLastName" placeholder=".">
+              <input type="text" class="form-control" id="staffLastName" formControlName="staffLastName" placeholder="." [ngClass]="(myForm.get('staffLastName')?.invalid && myForm.get('staffLastName')?.dirty && !myForm.get('staffLastName')?.pristine && myForm.get('staffLastName')?.touched)? 'is-invalid': '' || (myForm.get('staffLastName')?.untouched || myForm.get('staffLastName')?.pristine)? '': '' || (myForm.get('staffLastName')?.valid)? 'is-valid':''" required>
               <label for="staffLastName">Last Names</label>
+              <div *ngIf="myForm.get('staffLastName')?.hasError('maxlength')" class="invalid-feedback">
+                max characters: 40
+              </div>
+              <div *ngIf="(myForm.get('staffLastName')?.hasError('required'))" class="invalid-feedback">
+                This item is required
+              </div>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6">
             <div class="form-floating mb-3">
-              <select class="form-select" formControlName="department" id="department" aria-label="">
-                <option selected>- Choose one -</option>
+              <select class="form-select" formControlName="department" id="department" aria-label="" [ngClass]="(myForm.get('department')?.invalid && myForm.get('department')?.touched)? 'is-invalid': '' || (myForm.get('department')?.untouched)? '': '' || (myForm.get('department')?.valid)? 'is-valid':''" required>
                 <option value="Human Resources">Human Resources</option>
                 <option value="Development">Development</option>
                 <option value="Marketing">Marketing</option>
                 <option value="Sales">Sales</option>
               </select>
               <label for="department">Department</label>
+              <div *ngIf="(myForm.get('department')?.hasError('required'))" class="invalid-feedback">
+                This item is required
+              </div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-floating mb-3">
-              <input type="text" class="form-control" formControlName="position" id="position" placeholder=".">
+              <input type="text" class="form-control" formControlName="position" id="position" placeholder="." [ngClass]="(myForm.get('position')?.invalid && myForm.get('position')?.dirty && !myForm.get('position')?.pristine && myForm.get('position')?.touched)? 'is-invalid': '' || (myForm.get('position')?.untouched || myForm.get('position')?.pristine)? '': '' || (myForm.get('position')?.valid)? 'is-valid':''" required>
               <label for="position">Position</label>
+              <div *ngIf="myForm.get('position')?.hasError('maxlength')" class="invalid-feedback">
+                max characters: 40
+              </div>
+              <div *ngIf="(myForm.get('position')?.hasError('required'))" class="invalid-feedback">
+                This item is required
+              </div>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6">
             <div class="form-floating mb-3">
-              <select class="form-select" formControlName="staffType" id="staffType" aria-label="">
-                <option selected>- Choose one -</option>
+              <select class="form-select" formControlName="staffType" id="staffType" aria-label="" [ngClass]="(myForm.get('staffType')?.invalid && myForm.get('staffType')?.touched)? 'is-invalid': '' || (myForm.get('staffType')?.untouched)? '': '' || (myForm.get('staffType')?.valid)? 'is-valid':''" required>
+
                 <option value="Part Time">Part Time</option>
                 <option value="Full Time">Full Time</option>
                 <option value="Temporary">Temporary</option>
               </select>
               <label for="staffType">Staff Type</label>
+              <div *ngIf="(myForm.get('staffType')?.hasError('required'))" class="invalid-feedback">
+                This item is required
+              </div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-floating mb-3">
-              <input type="Number" class="form-control" formControlName="salary" id="salary" placeholder=".">
+              <input type="Number" class="form-control" formControlName="salary" id="salary" placeholder="." [ngClass]="(myForm.get('salary')?.invalid && myForm.get('salary')?.dirty && !myForm.get('salary')?.pristine && myForm.get('salary')?.touched)? 'is-invalid': '' || (myForm.get('salary')?.pristine)? '': '' || (myForm.get('salary')?.valid)? 'is-valid':''" required>
               <label for="salary">Salary</label>
+              <div *ngIf="(myForm.get('salary')?.hasError('min'))" class="invalid-feedback">
+                Mr Crabs says: its has to be more than 350
+              </div>
+              <div *ngIf="(myForm.get('salary')?.hasError('required'))" class="invalid-feedback">
+                This item is required
+              </div>
             </div>
           </div>
         </div>
-       
         <div class="btn-group" role="group" aria-label="Basic example">
           <button type="button" class="btn btn-outline-primary-inversed" [routerLink]="['/staff']"><i class="fa fa-arrow-circle-left"></i> Back</button>
-          <button type="submit" class="btn btn-outline-success-reversed"><i class="fa fa-plus-square"></i> Save</button>
-          <button type="button" class="btn btn-outline-danger-reversed"><i class="fa fa-eraser"></i> Clean</button>
+          <button type="button" (click)="save()" class="btn btn-outline-success-reversed" [disabled]="!(myForm.valid && myForm.touched)"><i class="fa fa-plus-square"></i> Save</button>
+          <button type="button" (click)="clean(this.id)" class="btn btn-outline-danger-reversed" [disabled]="!(myForm.touched && myForm.dirty)"><i class="fa fa-eraser"></i> Clean</button>
         </div>
       </form>
     </div>
