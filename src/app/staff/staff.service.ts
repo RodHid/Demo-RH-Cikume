@@ -8,11 +8,10 @@ import { addDoc, collection, collectionData, deleteDoc, doc, docData, setDoc, Fi
   providedIn: 'root'
 })
 export class StaffService {
+  
+  constructor(private _firestore: Firestore) { }
 
-  private staff: IStaff[] = [];
-  constructor(private  _firestore: Firestore) { }
-
-   createStaff(staff: IStaff): DocumentData {
+  createStaff(staff: IStaff): DocumentData {
     const staffRef = collection(this._firestore, 'staff');
     return addDoc(staffRef, staff);
   }
@@ -34,7 +33,7 @@ export class StaffService {
 
   specifiedStaff$(id: string): Observable<IStaff> {
     const staffRef = doc(this._firestore, `staff/${id}`);
-    return docData( staffRef ) as Observable<IStaff>;
+    return docData(staffRef) as Observable<IStaff>;
   }
 
 

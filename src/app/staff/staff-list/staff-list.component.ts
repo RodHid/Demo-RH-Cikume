@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { delay, filter, map, pipe } from 'rxjs';
+import { map } from 'rxjs';
 import Swal from 'sweetalert2';
 import { IStaff } from '../staff';
 import { StaffService } from '../staff.service';
@@ -32,7 +32,7 @@ export class StaffListComponent implements OnInit {
     }
   }
 
-  pageConfig(staff: IStaff[]){
+  pageConfig(staff: IStaff[]) {
     this.config = {
       itemsPerPage: 5,
       currentPage: 1,
@@ -41,7 +41,7 @@ export class StaffListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.rxjsUse('','');
+    this.rxjsUse('', '');
   }
 
   deleteStaff(staff: IStaff) {
@@ -70,13 +70,13 @@ export class StaffListComponent implements OnInit {
     });
   }
 
-  show(): boolean{
+  show(): boolean {
     this.filterForm.reset();
-    return (this.showFilter)? this.showFilter = false: this.showFilter = true;
+    return (this.showFilter) ? this.showFilter = false : this.showFilter = true;
   }
 
-  rxjsUse(type: string,value: string) {
-    (type === 'No filter' && value === '')? this.filterForm.reset():'';
+  rxjsUse(type: string, value: string) {
+    (type === 'No filter' && value === '') ? this.filterForm.reset() : '';
 
     this._staffService.readStaff$().pipe(
       map(x => x.filter(data => {
@@ -112,7 +112,7 @@ export class StaffListComponent implements OnInit {
     });
   }
 
-  getSpreadsheet(staff: IStaff[]): void{
+  getSpreadsheet(staff: IStaff[]): void {
     this.total = 0;
     staff.forEach(element => {
       this.total += element.salary;

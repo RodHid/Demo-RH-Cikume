@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { StaffService } from '../staff.service';
 import { IStaff } from '../staff';
 import Swal from 'sweetalert2';
-import { map } from 'rxjs';
 
 @Component({
   templateUrl: './staff-edit.component.html',

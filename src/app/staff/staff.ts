@@ -1,7 +1,7 @@
 /* Defines the Staff entity kinda like OOP */
 
 export interface IStaff {
-    id: number,
+    id: string,
     dui: string,
     staffName: string,
     staffLastName: string,
@@ -10,8 +10,3 @@ export interface IStaff {
     position: string,
     salary: number
 }
-
-export interface IStaffResolved {
-    staff: IStaff;
-    error?: any;
-  }
