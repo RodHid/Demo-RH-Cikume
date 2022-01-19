@@ -5,20 +5,12 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { StaffRoutingModule } from './staff.routing.module';
 
 @NgModule({
     imports: [
         CommonModule,
-        RouterModule.forChild([
-            { 
-                path: '',
-                component: StaffListComponent 
-            },
-            {
-                path: ':id/edit',
-                component: StaffEditComponent 
-            },
-        ]),
+        StaffRoutingModule,
         ReactiveFormsModule,
         FormsModule,
         NgxPaginationModule,

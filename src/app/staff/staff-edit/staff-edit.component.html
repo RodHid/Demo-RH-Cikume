@@ -95,7 +95,7 @@
               <input type="Number" class="form-control" formControlName="salary" id="salary" placeholder="." [ngClass]="(myForm.get('salary')?.invalid && myForm.get('salary')?.dirty && !myForm.get('salary')?.pristine && myForm.get('salary')?.touched)? 'is-invalid': '' || (myForm.get('salary')?.pristine)? '': '' || (myForm.get('salary')?.valid)? 'is-valid':''" required>
               <label for="salary">Salary</label>
               <div *ngIf="(myForm.get('salary')?.hasError('min'))" class="invalid-feedback">
-                Mr Crabs says: its has to be more than 350
+                It has to be more than 350
               </div>
               <div *ngIf="(myForm.get('salary')?.hasError('required'))" class="invalid-feedback">
                 This item is required
