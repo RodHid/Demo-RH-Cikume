@@ -21,7 +21,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
         ]),
         ReactiveFormsModule,
         FormsModule,
-        NgxPaginationModule
+        NgxPaginationModule,
     ],
     declarations: [StaffListComponent, StaffEditComponent],
 })

@@ -10,9 +10,9 @@
         <div class="row">
           <div class="col-md-4">
             <div class="form-floating mb-3">
-              <input type="text" class="form-control" [ngClass]="(myForm.get('dui')?.invalid && myForm.get('dui')?.dirty && !myForm.get('dui')?.pristine && myForm.get('dui')?.touched)? 'is-invalid': '' || (myForm.get('dui')?.pristine)? '': '' || (myForm.get('dui')?.valid)? 'is-valid':''" pattern="^[0-9]{7}-+[0-9]{1}$" id="dui" formControlName="dui" placeholder=".">
+              <input type="text" class="form-control" [ngClass]="(myForm.get('dui')?.invalid && myForm.get('dui')?.dirty && !myForm.get('dui')?.pristine && myForm.get('dui')?.touched)? 'is-invalid': '' || (myForm.get('dui')?.pristine)? '': '' || (myForm.get('dui')?.valid)? 'is-valid':''" pattern="^[0-9]{8}-[0-9]{1}$" id="dui" formControlName="dui" placeholder=".">
               <label for="dui">DUI</label>
-              <div *ngIf="(myForm.get('dui')?.hasError('pattern') && !myForm.get('dui')?.pristine && !myForm.get('dui')?.untouched)" class="invalid-feedback">
+              <div *ngIf="(myForm.get('dui')?.hasError('pattern') && !myForm.get('dui')?.untouched)" class="invalid-feedback">
                 Dui pattern: #######-#
               </div>
               <div *ngIf="(myForm.get('dui')?.hasError('required'))" class="invalid-feedback">

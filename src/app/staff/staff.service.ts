@@ -1,7 +1,7 @@
 import { IStaff } from './staff';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 import { addDoc, collection, collectionData, deleteDoc, doc, docData, setDoc, Firestore, DocumentData } from '@angular/fire/firestore';
 
 @Injectable({
@@ -9,25 +9,12 @@ import { addDoc, collection, collectionData, deleteDoc, doc, docData, setDoc, Fi
 })
 export class StaffService {
 
-  private api: string = 'api/staff-data.json';
   private staff: IStaff[] = [];
-  private url: string = 'https://fir-rh-a9eb7-default-rtdb.firebaseio.com/staff';
-  constructor(private _http: HttpClient,
-    //private readonly _firestore: Firestore,
-    private  _firestore: Firestore) { }
+  constructor(private  _firestore: Firestore) { }
 
    createStaff(staff: IStaff): DocumentData {
     const staffRef = collection(this._firestore, 'staff');
     return addDoc(staffRef, staff);
-  }
-
-  addStaff(staff: IStaff): void {
-    console.log(staff);
-    this.staff.push(staff);
-    this._http.put(this.url+'.json',this.staff).subscribe({
-      next: response => console.log('Resultado de agregacion: ',response),
-      error: err => console.log('Error: ', err)
-    });
   }
 
   readStaff$(): Observable<IStaff[]> {

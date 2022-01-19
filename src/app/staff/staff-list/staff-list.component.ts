@@ -18,6 +18,7 @@ export class StaffListComponent implements OnInit {
   config!: any;
   p: number = 1;
   collection = [];
+  showSpinner: boolean = true;
 
   constructor(private _fb: FormBuilder, private _staffService: StaffService) {
     this.filterForm = this._fb.group({
@@ -44,7 +45,6 @@ export class StaffListComponent implements OnInit {
   }
 
   deleteStaff(staff: IStaff) {
-    //this._staffService.supressStaff(staff);
     console.log(staff);
     Swal.fire({
       icon: 'warning',
@@ -105,6 +105,7 @@ export class StaffListComponent implements OnInit {
         }
       }))
     ).subscribe(x => {
+      this.showSpinner = false;
       //console.log(x);
       this.staff = x;
       this.getSpreadsheet(this.staff);

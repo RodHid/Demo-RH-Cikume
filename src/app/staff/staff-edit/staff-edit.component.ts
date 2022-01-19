@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { StaffService } from '../staff.service';
 import { IStaff } from '../staff';
 import Swal from 'sweetalert2';
+import { map } from 'rxjs';
 
 @Component({
   templateUrl: './staff-edit.component.html',
@@ -12,12 +13,12 @@ import Swal from 'sweetalert2';
 export class StaffEditComponent implements OnInit {
   pageTitle: string = 'Staff Data';
   myForm!: FormGroup;
-  staff!: IStaff;
+  staff!: IStaff[];
   id!: string | null;
 
   constructor(private _fb: FormBuilder, private _service: StaffService, private _route: ActivatedRoute, private _router: Router) {
     this.myForm = this._fb.group({
-      dui: ['', [Validators.required, Validators.maxLength(9), Validators.pattern('^[0-9]{7}-+[0-9]{1}$')]],
+      dui: ['', [Validators.required, Validators.maxLength(10), Validators.pattern('^[0-9]{8}-[0-9]{1}$')]],
       staffName: ['', [Validators.required, Validators.maxLength(40)]],
       staffLastName: ['', [Validators.required, Validators.maxLength(40)]],
       staffType: ['', Validators.required],
@@ -84,10 +85,9 @@ export class StaffEditComponent implements OnInit {
     if (id != 0) {
       this.myForm.get('staffName')?.reset();
       this.myForm.get('staffLastName')?.reset();
-      this.myForm.get('staffType')?.reset();
-      this.myForm.get('department')?.reset();
-      this.myForm.get('salary')?.reset();
       this.myForm.get('position')?.reset();
+      this.myForm.get('department')?.reset();
+      this.myForm.get('staffType')?.reset();
     } else this.myForm.reset();
   }
 
